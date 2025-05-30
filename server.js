@@ -21,7 +21,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Serve static files - More specific static file serving
+// Serve static files in a specific order
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -43,24 +43,9 @@ const auth = require('./middleware/auth');
 // API Routes
 app.use('/api/users', usersRouter);
 app.use('/api/jobs', jobsRouter);
-app.use('/api/applications', auth, applicationsRouter);
+app.use('/api/applications', applicationsRouter);
 
 // HTML Routes with explicit error handling
-app.get('/', (req, res) => {
-    const indexPath = path.join(__dirname, 'index.html');
-    if (fs.existsSync(indexPath)) {
-        res.sendFile(indexPath, (err) => {
-            if (err) {
-                console.error('Error sending index.html:', err);
-                res.status(500).send('Error loading page');
-            }
-        });
-    } else {
-        console.error('index.html not found at:', indexPath);
-        res.status(404).send('Homepage not found');
-    }
-});
-
 const sendFile = (filename) => (req, res) => {
     const filePath = path.join(__dirname, filename);
     if (fs.existsSync(filePath)) {
@@ -76,6 +61,8 @@ const sendFile = (filename) => (req, res) => {
     }
 };
 
+// Define routes for all HTML pages
+app.get('/', sendFile('index.html'));
 app.get('/about', sendFile('about.html'));
 app.get('/contact', sendFile('contact.html'));
 app.get('/job-seekers', sendFile('job-seekers.html'));
@@ -104,21 +91,22 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Something went wrong!' });
 });
 
-// Handle 404 with more information
+// Handle 404 - Send to index.html for client-side routing
 app.use((req, res) => {
-    console.log('404 - Not Found:', req.url);
-    console.log('Method:', req.method);
-    console.log('Headers:', req.headers);
-    res.status(404).sendFile(path.join(__dirname, 'index.html'), (err) => {
-        if (err) {
-            console.error('Error sending 404 page:', err);
-            res.status(404).send('Page not found');
-        }
-    });
+    if (req.accepts('html')) {
+        res.sendFile(path.join(__dirname, 'index.html'), (err) => {
+            if (err) {
+                console.error('Error sending index.html:', err);
+                res.status(404).send('Page not found');
+            }
+        });
+    } else {
+        res.status(404).json({ message: 'Not found' });
+    }
 });
 
 // Start server
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`🚀 Server running at http://localhost:${port}`);
     console.log('Available routes:');
     console.log(`1. Homepage: http://localhost:${port}`);
