@@ -134,7 +134,7 @@
 
     
     // Submit job posting form
-    window.submitJobPosting = function(event) {
+    window.submitJobPosting = async function(event) {
         event.preventDefault();
         
         // Get form data
@@ -158,7 +158,7 @@
         
         // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.contactEmail)) {
+        if (!data.contactEmail) {
             alert('Please enter a valid email address.');
             document.getElementById('contactEmail').focus();
             return;
@@ -170,10 +170,48 @@
             document.getElementById('termsAccept').focus();
             return;
         }
-        
-        // Simulate payment process
-        const confirmed = confirm(`Job Posting Summary:
-        
+
+        try {
+            // Get token from localStorage (assuming user is logged in)
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please log in to post a job');
+                return;
+            }
+
+            // Send job posting to API
+            const response = await fetch('/api/jobs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    job_title: data.jobTitle,
+                    company_name: data.companyName,
+                    category: data.category,
+                    job_type: data.jobType,
+                    experience_level: data.experienceLevel,
+                    province: data.province,
+                    city: data.city,
+                    salary_min: data.salaryMin || null,
+                    salary_max: data.salaryMax || null,
+                    job_description: data.jobDescription,
+                    requirements: data.requirements,
+                    contact_name: data.contactName,
+                    contact_email: data.contactEmail,
+                    contact_phone: data.contactPhone || ''
+                })
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Failed to post job');
+            }
+
+            // Simulate payment process
+            const confirmed = confirm(`Job Posting Summary:
+            
 Title: ${data.jobTitle}
 Company: ${data.companyName}
 Location: ${data.city}, ${data.province}
@@ -182,16 +220,36 @@ Category: ${data.category}
 Total Fee: R100.00
 
 Click OK to proceed to payment.`);
-        
-        if (confirmed) {
-            // In a real application, this would redirect to a payment gateway
-            alert('Thank you! Your job posting has been submitted. You will be redirected to complete payment of R100.00. Your job will go live within 24 hours after payment confirmation.');
-            
-            // Reset form
-            event.target.reset();
-            document.getElementById('city').innerHTML = '<option value="">Select City/Town</option>';
+
+            if (confirmed) {
+                // Show success message
+                alert('Job posted successfully! It will now appear in the correct category.');
+                
+                // Reset form
+                event.target.reset();
+                
+                // Redirect to job listings
+                window.location.href = 'job-seekers.html';
+            }
+        } catch (error) {
+            console.error('Error posting job:', error);
+            alert('Error posting job: ' + error.message);
         }
     };
+
+    // Function to update category counters
+    function updateCategoryCounters() {
+        const jobs = JSON.parse(localStorage.getItem('jobs') || '[]');
+        const categories = document.querySelectorAll('#category option');
+        
+        // Reset all counters
+        categories.forEach(option => {
+            if (option.value) {
+                const count = jobs.filter(job => job.category === option.value).length;
+                option.textContent = `${option.textContent.split('(')[0]} (${count})`;
+            }
+        });
+    }
 
     // Initialize page
     document.addEventListener('DOMContentLoaded', function() {

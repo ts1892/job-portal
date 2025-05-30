@@ -24,7 +24,10 @@
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="Job Now Logo">
-                <span class="logo-text">JOB NOW</span>
+                <div class="logo-text">
+                    <span>JOB</span>
+                    <span>NOW</span>
+                </div>
             </a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
@@ -115,6 +118,8 @@
                         <label for="salaryFilter">Minimum Salary</label>
                         <select id="salaryFilter" name="salaryFilter" onchange="filterJobs()">
                             <option value="">Any Salary</option>
+                            <option value="5000">R5,000+</option>
+                            <option value="10000">R10,000+</option>
                             <option value="20000">R20,000+</option>
                             <option value="30000">R30,000+</option>
                             <option value="40000">R40,000+</option>

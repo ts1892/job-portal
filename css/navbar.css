@@ -30,83 +30,60 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-weight: bold;
-    color: var(--primary-blue);
-    font-size: 1.6rem;
-    transition: all 0.3s ease;
-    position: relative;
+    gap: 12px;
 }
 
 .logo img {
-    height: 42px;
-    margin-right: 12px;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    filter: drop-shadow(0 2px 8px rgba(44, 122, 175, 0.2));
-}
-
-.logo:hover img {
-    transform: rotate(-5deg) scale(1.1);
-    filter: drop-shadow(0 4px 12px rgba(44, 122, 175, 0.3));
+    height: 40px;
+    width: auto;
 }
 
 .logo-text {
-    background: var(--gradient-blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    position: relative;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    gap: 8px;
 }
 
-.logo-text::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: var(--accent-orange);
-    transition: width 0.4s ease;
+.logo-text span:first-child {
+    color: #004AAD;
 }
 
-.logo:hover .logo-text::after {
-    width: 100%;
+.logo-text span:last-child {
+    color: #FF0000;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
+    gap: 30px;
     margin: 0;
     padding: 0;
-    gap: 35px;
 }
 
 .nav-link {
-    text-decoration: none;
     color: var(--dark-gray);
-    font-weight: 500;
-    padding: 12px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 10px;
     position: relative;
-    background: transparent;
-    font-size: 1rem;
-    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
 }
 
-/* Clean sliding underline */
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 50%;
-    width: 0;
-    height: 3px;
-    background: var(--accent-orange);
-    transition: all 0.3s ease;
     transform: translateX(-50%);
-    border-radius: 2px;
+    width: 0;
+    height: 2px;
+    background: var(--accent-orange);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue);
 }
 
 .nav-link:hover::after,
@@ -114,14 +91,8 @@
     width: 80%;
 }
 
-.nav-link:hover,
 .nav-link.active {
     color: var(--primary-blue);
-}
-
-.nav-link.active {
-    color: var(--primary-blue);
-    font-weight: 600;
 }
 
 .mobile-menu-toggle {
@@ -262,4 +233,134 @@
 /* Add some breathing room for first section */
 body {
     padding-top: 75px;
+}
+
+/* Enhanced Navigation Styles for JOB NOW Portal */
+
+.navbar {
+    background: var(--white);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-light);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+}
+
+.logo-text span:first-child {
+    color: #004AAD;
+}
+
+.logo-text span:last-child {
+    color: #FF0000;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent-orange);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-link.active {
+    color: var(--primary-blue);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--dark-gray);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: var(--shadow-medium);
+    }
+    
+    .nav-menu.nav-menu-active {
+        display: flex;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 10px 0;
+    }
 }

@@ -1,153 +1,35 @@
 // Enhanced JavaScript for JOB NOW Portal
 
-// Job Categories with counters
+// Job Categories with counters and icons
 const jobCategories = {
-    'accounting': { name: 'Accounting & Finance', count: 0 },
-    'it': { name: 'Information Technology', count: 0 },
-    'marketing': { name: 'Marketing & Sales', count: 0 },
-    'healthcare': { name: 'Healthcare & Medical', count: 0 },
-    'education': { name: 'Education & Training', count: 0 },
-    'engineering': { name: 'Engineering', count: 0 },
-    'retail': { name: 'Retail & Customer Service', count: 0 },
-    'hospitality': { name: 'Hospitality & Tourism', count: 0 },
-    'manufacturing': { name: 'Manufacturing & Production', count: 0 },
-    'construction': { name: 'Construction & Property', count: 0 },
-    'legal': { name: 'Legal & Compliance', count: 0 },
-    'transport': { name: 'Transport & Logistics', count: 0 },
-    'agriculture': { name: 'Agriculture & Mining', count: 0 },
-    'media': { name: 'Media & Communications', count: 0 },
-    'government': { name: 'Government & NGO', count: 0 }
+    'accounting': { name: 'Accounting & Finance', count: 0, icon: '💰' },
+    'it': { name: 'Information Technology', count: 0, icon: '💻' },
+    'marketing': { name: 'Marketing & Sales', count: 0, icon: '🎯' },
+    'healthcare': { name: 'Healthcare & Medical', count: 0, icon: '🏥' },
+    'education': { name: 'Education & Training', count: 0, icon: '📚' },
+    'engineering': { name: 'Engineering', count: 0, icon: '⚙️' },
+    'retail': { name: 'Retail & Customer Service', count: 0, icon: '🛍️' },
+    'hospitality': { name: 'Hospitality & Tourism', count: 0, icon: '🏨' },
+    'manufacturing': { name: 'Manufacturing & Production', count: 0, icon: '🏭' },
+    'construction': { name: 'Construction & Property', count: 0, icon: '🏗️' },
+    'legal': { name: 'Legal & Compliance', count: 0, icon: '⚖️' },
+    'transport': { name: 'Transport & Logistics', count: 0, icon: '🚛' },
+    'agriculture': { name: 'Agriculture & Mining', count: 0, icon: '🌾' },
+    'media': { name: 'Media & Communications', count: 0, icon: '📺' },
+    'government': { name: 'Government & NGO', count: 0, icon: '🏛️' }
 };
 
-// Sample jobs database with categories
-let jobsDatabase = [
-    {
-        id: 1,
-        title: 'Senior Software Developer',
-        company: 'TechCorp SA',
-        location: 'Cape Town, Western Cape',
-        category: 'it',
-        type: 'Full-time',
-        salary: 'R45,000 - R65,000',
-        salaryMin: 45000,
-        posted: '2 days ago',
-        description: 'We are looking for an experienced software developer to join our growing team...',
-        requirements: 'Bachelor\'s degree in Computer Science, 5+ years experience with React and Node.js...'
-    },
-    {
-        id: 2,
-        title: 'Financial Analyst',
-        company: 'FinanceFirst',
-        location: 'Johannesburg, Gauteng',
-        category: 'accounting',
-        type: 'Full-time',
-        salary: 'R35,000 - R50,000',
-        salaryMin: 35000,
-        posted: '1 day ago',
-        description: 'Join our finance team to analyze market trends and provide strategic insights...',
-        requirements: 'CFA or CA(SA) preferred, 3+ years experience in financial analysis...'
-    },
-    {
-        id: 3,
-        title: 'Marketing Manager',
-        company: 'BrandBuilders',
-        location: 'Durban, KwaZulu-Natal',
-        category: 'marketing',
-        type: 'Full-time',
-        salary: 'R40,000 - R55,000',
-        salaryMin: 40000,
-        posted: '3 days ago',
-        description: 'Lead our marketing initiatives and drive brand awareness across digital channels...',
-        requirements: 'Marketing degree, 4+ years experience in digital marketing, Google Ads certified...'
-    },
-    {
-        id: 4,
-        title: 'Registered Nurse',
-        company: 'Wellness Hospital',
-        location: 'Pretoria, Gauteng',
-        category: 'healthcare',
-        type: 'Full-time',
-        salary: 'R25,000 - R35,000',
-        salaryMin: 25000,
-        posted: '1 day ago',
-        description: 'Provide exceptional patient care in our modern hospital facility...',
-        requirements: 'Nursing degree, SANC registration, 2+ years hospital experience...'
-    },
-    {
-        id: 5,
-        title: 'Primary School Teacher',
-        company: 'ABC Primary School',
-        location: 'Port Elizabeth, Eastern Cape',
-        category: 'education',
-        type: 'Full-time',
-        salary: 'R22,000 - R28,000',
-        salaryMin: 22000,
-        posted: '4 days ago',
-        description: 'Inspiring young minds in our well-equipped learning environment...',
-        requirements: 'Teaching qualification, SACE registration, passion for education...'
-    }
-];
-
-// Mobile menu toggle
-function toggleMobileMenu() {
-    const navMenu = document.getElementById('navMenu');
-    if (navMenu) {
-        navMenu.classList.toggle('nav-menu-active');
-    }
-}
-
-// Update category counters
-function updateCategoryCounters() {
-    // Reset all counters
-    Object.keys(jobCategories).forEach(key => {
-        jobCategories[key].count = 0;
-    });
-    
-    // Count jobs in each category
-    jobsDatabase.forEach(job => {
-        if (jobCategories[job.category]) {
-            jobCategories[job.category].count++;
-        }
-    });
-    
-    // Update display
-    displayJobCategories();
-}
-
-// Display job categories
+// Display job categories in grid
 function displayJobCategories() {
     const categoriesGrid = document.getElementById('jobCategoriesGrid');
-    const categoryFilter = document.getElementById('categoryFilter');
-    
     if (!categoriesGrid) return;
-    
+
     let categoriesHTML = '';
-    let filterOptionsHTML = '<option value="">All Categories</option>';
-    
-    Object.keys(jobCategories).forEach(key => {
-        const category = jobCategories[key];
-        const iconMap = {
-            'accounting': '💰',
-            'it': '💻',
-            'marketing': '🎯',
-            'healthcare': '🏥',
-            'education': '📚',
-            'engineering': '⚙️',
-            'retail': '🛍️',
-            'hospitality': '🏨',
-            'manufacturing': '🏭',
-            'construction': '🏗️',
-            'legal': '⚖️',
-            'transport': '🚛',
-            'agriculture': '🌾',
-            'media': '📺',
-            'government': '🏛️'
-        };
-        
+    Object.entries(jobCategories).forEach(([key, category]) => {
         categoriesHTML += `
             <div class="category-card" onclick="filterByCategory('${key}')" style="cursor: pointer;">
                 <div class="card" style="text-align: center; padding: 25px; transition: all 0.3s ease; border: 2px solid transparent;">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">${iconMap[key] || '💼'}</div>
+                    <div style="font-size: 3rem; margin-bottom: 15px;">${category.icon}</div>
                     <h3 style="color: var(--primary-blue); margin-bottom: 15px; font-size: 1.1em;">${category.name}</h3>
                     <div class="job-count" style="background: var(--gradient-orange); color: white; padding: 10px 18px; border-radius: 25px; display: inline-block; font-weight: bold; box-shadow: var(--shadow-light);">
                         ${category.count} jobs
@@ -155,73 +37,104 @@ function displayJobCategories() {
                 </div>
             </div>
         `;
-        
-        filterOptionsHTML += `<option value="${key}">${category.name}</option>`;
     });
-    
+
     categoriesGrid.innerHTML = categoriesHTML;
-    
+}
+
+// Fetch jobs from API
+async function fetchJobs(filters = {}) {
+    try {
+        // Build query string from filters
+        const queryParams = new URLSearchParams();
+        if (filters.category) queryParams.append('category', filters.category);
+        if (filters.job_type) queryParams.append('job_type', filters.job_type);
+        if (filters.province) queryParams.append('province', filters.province);
+        if (filters.city) queryParams.append('city', filters.city);
+        if (filters.keyword) queryParams.append('keyword', filters.keyword);
+        if (filters.salary_min) queryParams.append('salary_min', filters.salary_min);
+
+        const response = await fetch(`/api/jobs?${queryParams.toString()}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch jobs');
+        }
+
+        const jobs = await response.json();
+        
+        // Reset counters
+        Object.keys(jobCategories).forEach(category => {
+            jobCategories[category].count = 0;
+        });
+
+        // Update category counters
+        jobs.forEach(job => {
+            if (jobCategories[job.category]) {
+                jobCategories[job.category].count++;
+            }
+        });
+
+        // Update category displays
+        updateCategoryDisplay();
+        displayJobCategories();
+        
+        // Update job count display
+        const jobCount = document.getElementById('jobCount');
+        if (jobCount) {
+            jobCount.textContent = `${jobs.length} jobs found`;
+        }
+
+        return jobs;
+    } catch (error) {
+        console.error('Error fetching jobs:', error);
+        showNotification('Error loading jobs. Please try again.', 'error');
+        return [];
+    }
+}
+
+// Update category display
+function updateCategoryDisplay() {
+    const categoryList = document.getElementById('categoryList');
+    if (!categoryList) return;
+
+    categoryList.innerHTML = Object.entries(jobCategories)
+        .map(([key, { name, count }]) => `
+            <li>
+                <a href="#" onclick="filterByCategory('${key}'); return false;">
+                    ${name} <span class="count">${count}</span>
+                </a>
+            </li>
+        `).join('');
+        
+    // Also update category filter dropdown if it exists
+    const categoryFilter = document.getElementById('categoryFilter');
     if (categoryFilter) {
+        let filterOptionsHTML = '<option value="">All Categories</option>';
+        Object.entries(jobCategories).forEach(([key, { name, count }]) => {
+            filterOptionsHTML += `<option value="${key}">${name} (${count})</option>`;
+        });
         categoryFilter.innerHTML = filterOptionsHTML;
     }
 }
 
-// Filter by category
-function filterByCategory(categoryKey) {
-    const categoryFilter = document.getElementById('categoryFilter');
+// Filter jobs by category
+async function filterByCategory(category) {
+    const jobs = await fetchJobs({ category });
+    displayJobs(jobs);
+    
+    // Update section title if it exists
     const sectionTitle = document.getElementById('sectionTitle');
-    
-    if (categoryFilter) {
-        categoryFilter.value = categoryKey;
-    }
-    
     if (sectionTitle) {
-        if (categoryKey) {
-            sectionTitle.textContent = jobCategories[categoryKey].name + ' Jobs';
-        } else {
-            sectionTitle.textContent = 'All Jobs';
-        }
+        sectionTitle.textContent = category ? `${jobCategories[category].name} Jobs` : 'All Jobs';
     }
-    
-    filterJobs();
 }
 
-// Display filtered jobs
-function filterJobs() {
-    const keywordSearch = document.getElementById('keywordSearch')?.value.toLowerCase() || '';
-    const categoryFilter = document.getElementById('categoryFilter')?.value || '';
-    const provinceFilter = document.getElementById('provinceFilter')?.value || '';
-    const typeFilter = document.getElementById('typeFilter')?.value || '';
-    const salaryFilter = document.getElementById('salaryFilter')?.value || '';
-    const jobResults = document.getElementById('jobResults');
-    const jobCount = document.getElementById('jobCount');
-    
-    if (!jobResults) return;
-    
-    // Filter jobs
-    let filteredJobs = jobsDatabase.filter(job => {
-        const matchesKeyword = !keywordSearch || 
-            job.title.toLowerCase().includes(keywordSearch) ||
-            job.company.toLowerCase().includes(keywordSearch) ||
-            job.description?.toLowerCase().includes(keywordSearch) ||
-            job.requirements?.toLowerCase().includes(keywordSearch);
-        
-        const matchesCategory = !categoryFilter || job.category === categoryFilter;
-        const matchesProvince = !provinceFilter || job.location.toLowerCase().includes(provinceFilter.replace('-', ' '));
-        const matchesType = !typeFilter || job.type.toLowerCase().replace('-', '') === typeFilter;
-        const matchesSalary = !salaryFilter || (job.salaryMin && job.salaryMin >= parseInt(salaryFilter));
-        
-        return matchesKeyword && matchesCategory && matchesProvince && matchesType && matchesSalary;
-    });
-    
-    // Update job count
-    if (jobCount) {
-        jobCount.textContent = `${filteredJobs.length} jobs found`;
-    }
-    
-    // Display jobs
-    if (filteredJobs.length === 0) {
-        jobResults.innerHTML = `
+// Display jobs in the container
+function displayJobs(jobs) {
+    const jobsContainer = document.getElementById('jobResults');
+    if (!jobsContainer) return;
+
+    if (jobs.length === 0) {
+        jobsContainer.innerHTML = `
             <div class="card" style="text-align: center; padding: 60px;">
                 <div style="font-size: 4rem; margin-bottom: 20px; color: var(--medium-gray);">🔍</div>
                 <h3 style="color: var(--primary-blue);">No jobs found</h3>
@@ -231,53 +144,96 @@ function filterJobs() {
         `;
         return;
     }
+
+    jobsContainer.innerHTML = jobs.map(job => createJobCard(job)).join('');
+}
+
+// Create job card HTML
+function createJobCard(job) {
+    const salary = job.salary_min && job.salary_max 
+        ? `R${parseInt(job.salary_min).toLocaleString()} - R${parseInt(job.salary_max).toLocaleString()}`
+        : job.salary_min 
+        ? `From R${parseInt(job.salary_min).toLocaleString()}`
+        : job.salary_max 
+        ? `Up to R${parseInt(job.salary_max).toLocaleString()}`
+        : 'Salary Negotiable';
     
-    let jobsHTML = '';
-    filteredJobs.forEach(job => {
-        const categoryName = jobCategories[job.category]?.name || 'Other';
-        jobsHTML += `
-            <div class="card" style="margin-bottom: 25px; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; right: 0; background: var(--gradient-blue); color: white; padding: 5px 15px; border-radius: 0 0 0 15px; font-size: 12px; font-weight: bold;">
-                    ${job.posted}
-                </div>
-                
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; padding-top: 10px;">
-                    <div style="flex: 1;">
-                        <h3 style="color: var(--primary-blue); margin-bottom: 8px; font-size: 1.4rem;">${job.title}</h3>
-                        <p style="color: var(--dark-gray); margin-bottom: 8px; font-size: 1.1rem;"><strong>${job.company}</strong></p>
-                        <p style="color: var(--medium-gray); margin-bottom: 8px; display: flex; align-items: center;">
-                            <span style="margin-right: 8px;">📍</span> ${job.location}
-                        </p>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <span style="background: var(--light-orange); color: var(--accent-orange); padding: 6px 12px; border-radius: 15px; margin-right: 10px; font-size: 13px; font-weight: bold;">
-                        ${categoryName}
-                    </span>
-                    <span style="background: var(--light-gray); color: var(--dark-gray); padding: 6px 12px; border-radius: 15px; margin-right: 10px; font-size: 13px;">
-                        ${job.type}
-                    </span>
-                    <span style="background: var(--light-blue); color: var(--primary-blue); padding: 6px 12px; border-radius: 15px; font-size: 13px; font-weight: bold;">
-                        ${job.salary}
-                    </span>
-                </div>
-                
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                    <div style="flex: 1; min-width: 200px;">
-                        <p style="margin: 0; color: var(--medium-gray); font-size: 14px; line-height: 1.5;">
-                            ${job.description ? job.description.substring(0, 120) + '...' : 'Click to view full job description and requirements.'}
-                        </p>
-                    </div>
-                    <button class="btn btn-primary" onclick="openApplicationModal('${job.title}', '${job.company}')" style="min-width: 120px;">
-                        Apply Now
-                    </button>
+    const postedDate = new Date(job.created_at).toLocaleDateString('en-ZA');
+    
+    return `
+        <div class="card" style="margin-bottom: 25px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; right: 0; background: var(--gradient-blue); color: white; padding: 5px 15px; border-radius: 0 0 0 15px; font-size: 12px; font-weight: bold;">
+                Posted ${postedDate}
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; padding-top: 10px;">
+                <div style="flex: 1;">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 8px; font-size: 1.4rem;">${job.job_title}</h3>
+                    <p style="color: var(--dark-gray); margin-bottom: 8px; font-size: 1.1rem;"><strong>${job.company_name}</strong></p>
+                    <p style="color: var(--medium-gray); margin-bottom: 8px; display: flex; align-items: center;">
+                        <span style="margin-right: 8px;">📍</span> ${job.city}, ${job.province}
+                    </p>
                 </div>
             </div>
-        `;
-    });
+            
+            <div style="margin-bottom: 20px;">
+                <span style="background: var(--light-orange); color: var(--accent-orange); padding: 6px 12px; border-radius: 15px; margin-right: 10px; font-size: 13px; font-weight: bold;">
+                    ${jobCategories[job.category]?.name || job.category}
+                </span>
+                <span style="background: var(--light-gray); color: var(--dark-gray); padding: 6px 12px; border-radius: 15px; margin-right: 10px; font-size: 13px;">
+                    ${job.job_type}
+                </span>
+                <span style="background: var(--light-blue); color: var(--primary-blue); padding: 6px 12px; border-radius: 15px; font-size: 13px; font-weight: bold;">
+                    ${salary}
+                </span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <div style="flex: 1; min-width: 200px;">
+                    <p style="margin: 0; color: var(--medium-gray); font-size: 14px; line-height: 1.5;">
+                        ${job.job_description ? job.job_description.substring(0, 120) + '...' : 'Click to view full job description and requirements.'}
+                    </p>
+                </div>
+                <button class="btn btn-primary" onclick="openApplicationModal(${job.id})" style="min-width: 120px;">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Clear all filters
+function clearFilters() {
+    const keywordSearch = document.getElementById('keywordSearch');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const provinceFilter = document.getElementById('provinceFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const salaryFilter = document.getElementById('salaryFilter');
+    const sectionTitle = document.getElementById('sectionTitle');
     
-    jobResults.innerHTML = jobsHTML;
+    if (keywordSearch) keywordSearch.value = '';
+    if (categoryFilter) categoryFilter.value = '';
+    if (provinceFilter) provinceFilter.value = '';
+    if (typeFilter) typeFilter.value = '';
+    if (salaryFilter) salaryFilter.value = '';
+    if (sectionTitle) sectionTitle.textContent = 'All Jobs';
+    
+    fetchJobs().then(jobs => displayJobs(jobs));
+}
+
+// Initialize jobs and categories on page load
+document.addEventListener('DOMContentLoaded', async () => {
+    displayJobCategories(); // Display categories first with 0 counts
+    const jobs = await fetchJobs(); // This will update the counts and redisplay
+    displayJobs(jobs);
+});
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) {
+        navMenu.classList.toggle('nav-menu-active');
+    }
 }
 
 // Job Application Modal Functions
@@ -426,22 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Utility functions
-window.clearFilters = function() {
-    const inputs = ['keywordSearch', 'categoryFilter', 'provinceFilter', 'typeFilter', 'salaryFilter'];
-    inputs.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) element.value = '';
-    });
-    
-    const sectionTitle = document.getElementById('sectionTitle');
-    if (sectionTitle) sectionTitle.textContent = 'All Jobs';
-    
-    filterJobs();
-};
-
 // Make functions globally available
 window.toggleMobileMenu = toggleMobileMenu;
 window.filterByCategory = filterByCategory;
-window.filterJobs = filterJobs;
-window.updateCategoryCounters = updateCategoryCounters;
+window.clearFilters = clearFilters;
