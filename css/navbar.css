@@ -1,0 +1,265 @@
+/* Modern Navigation Styles */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(44, 122, 175, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(44, 122, 175, 0.1);
+}
+
+.navbar:hover {
+    box-shadow: 0 6px 40px rgba(44, 122, 175, 0.12);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--primary-blue);
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.logo img {
+    height: 42px;
+    margin-right: 12px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    filter: drop-shadow(0 2px 8px rgba(44, 122, 175, 0.2));
+}
+
+.logo:hover img {
+    transform: rotate(-5deg) scale(1.1);
+    filter: drop-shadow(0 4px 12px rgba(44, 122, 175, 0.3));
+}
+
+.logo-text {
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    position: relative;
+}
+
+.logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent-orange);
+    transition: width 0.4s ease;
+}
+
+.logo:hover .logo-text::after {
+    width: 100%;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 35px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+}
+
+/* Clean sliding underline */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--accent-orange);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-blue);
+}
+
+.nav-link.active {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: var(--gradient-blue);
+    color: var(--white);
+    border: none;
+    font-size: 1.6rem;
+    padding: 14px 18px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(44, 122, 175, 0.3);
+}
+
+.mobile-menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-orange);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.mobile-menu-toggle:hover::before {
+    left: 0;
+}
+
+.mobile-menu-toggle:hover {
+    transform: scale(1.08) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(44, 122, 175, 0.4);
+}
+
+.mobile-menu-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 75px;
+        right: -350px;
+        width: 320px;
+        height: calc(100vh - 75px);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+        backdrop-filter: blur(25px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 60px;
+        transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: -8px 0 30px rgba(0,0,0,0.12);
+        border-left: 4px solid var(--primary-blue);
+    }
+    
+    .nav-menu.nav-menu-active {
+        right: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 18px 30px;
+        margin: 12px 0;
+        width: 250px;
+        text-align: center;
+        border: 2px solid var(--light-gray);
+        background: var(--white);
+        transform: translateX(80px);
+        opacity: 0;
+        border-radius: 25px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    
+    /* Staggered animation for menu items */
+    .nav-menu.nav-menu-active .nav-link {
+        animation: slideInMobile 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+    
+    .nav-menu.nav-menu-active .nav-link:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu.nav-menu-active .nav-link:nth-child(2) { animation-delay: 0.2s; }
+    .nav-menu.nav-menu-active .nav-link:nth-child(3) { animation-delay: 0.3s; }
+    .nav-menu.nav-menu-active .nav-link:nth-child(4) { animation-delay: 0.4s; }
+    .nav-menu.nav-menu-active .nav-link:nth-child(5) { animation-delay: 0.5s; }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        border-color: var(--primary-blue);
+        background: var(--light-blue);
+        color: var(--primary-blue);
+        transform: translateX(0);
+    }
+    
+    /* Keep the orange underline on mobile */
+    .nav-link::after {
+        bottom: 5px;
+    }
+}
+
+/* Mobile slide-in animation */
+@keyframes slideInMobile {
+    from {
+        transform: translateX(80px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Scroll effect - navbar shrinks slightly when scrolling */
+.navbar.scrolled {
+    height: 65px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(44, 122, 175, 0.15);
+}
+
+.navbar.scrolled .nav-container {
+    height: 65px;
+}
+
+.navbar.scrolled .logo img {
+    height: 38px;
+}
+
+/* Add some breathing room for first section */
+body {
+    padding-top: 75px;
+}

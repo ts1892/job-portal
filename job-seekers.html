@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Jobs - JOB NOW</title>
+    <meta name="description" content="Browse thousands of job opportunities across South Africa. Find your perfect career match with JOB NOW's comprehensive job search platform.">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Job Now Logo">
+                <span class="logo-text">JOB NOW</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="job-seekers.html" class="nav-link active">Find Jobs</a></li>
+                <li><a href="signup.html" class="nav-link">Post Jobs</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Dream Job</h1>
+            <p>Explore thousands of opportunities across South Africa</p>
+        </div>
+    </section>
+
+    <!-- Job Categories Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-40 fade-in-up">Browse Jobs by Category</h2>
+            <div id="jobCategoriesGrid" class="grid grid-3">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Search and Results -->
+    <section class="section section-light">
+        <div class="container">
+            <!-- Search Header -->
+            <div class="search-results-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 20px;">
+                <h2 id="sectionTitle">All Jobs</h2>
+                <div id="jobCount" style="background: var(--gradient-blue); color: white; padding: 12px 20px; border-radius: 25px; font-weight: bold; box-shadow: var(--shadow-medium);">
+                    Loading...
+                </div>
+            </div>
+            
+            <!-- Enhanced Filter Section -->
+            <div class="card" style="margin-bottom: 40px; padding: 30px;">
+                <h3 style="color: var(--primary-blue); margin-bottom: 20px; text-align: center;">🔍 Find Your Perfect Job</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="keywordSearch">Job Title or Keyword</label>
+                        <input type="text" id="keywordSearch" name="keywordSearch" placeholder="e.g. Software Developer, Accountant" onkeyup="filterJobs()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryFilter">Category</label>
+                        <select id="categoryFilter" name="categoryFilter" onchange="filterJobs()">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="provinceFilter">Province</label>
+                        <select id="provinceFilter" name="provinceFilter" onchange="filterJobs()">
+                            <option value="">All Provinces</option>
+                            <option value="gauteng">Gauteng</option>
+                            <option value="western-cape">Western Cape</option>
+                            <option value="kwazulu-natal">KwaZulu-Natal</option>
+                            <option value="eastern-cape">Eastern Cape</option>
+                            <option value="limpopo">Limpopo</option>
+                            <option value="mpumalanga">Mpumalanga</option>
+                            <option value="north-west">North West</option>
+                            <option value="northern-cape">Northern Cape</option>
+                            <option value="free-state">Free State</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="typeFilter">Job Type</label>
+                        <select id="typeFilter" name="typeFilter" onchange="filterJobs()">
+                            <option value="">All Types</option>
+                            <option value="fulltime">Full-time</option>
+                            <option value="parttime">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="temporary">Temporary</option>
+                            <option value="internship">Internship</option>
+                            <option value="remote">Remote</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salaryFilter">Minimum Salary</label>
+                        <select id="salaryFilter" name="salaryFilter" onchange="filterJobs()">
+                            <option value="">Any Salary</option>
+                            <option value="20000">R20,000+</option>
+                            <option value="30000">R30,000+</option>
+                            <option value="40000">R40,000+</option>
+                            <option value="50000">R50,000+</option>
+                            <option value="60000">R60,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="button" onclick="clearFilters()" class="btn btn-secondary" style="margin-top: 25px; width: 100%;">Clear Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Results -->
+            <div id="jobResults">
+                <!-- Jobs will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tips Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-40">Job Search Tips</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--accent-orange); margin-bottom: 20px;">📝</div>
+                        <h3 style="color: var(--primary-blue);">Perfect Your CV</h3>
+                        <p>Tailor your CV for each application. Highlight relevant skills and experience that match the job requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--accent-orange); margin-bottom: 20px;">🎯</div>
+                        <h3 style="color: var(--primary-blue);">Apply Strategically</h3>
+                        <p>Focus on quality over quantity. Apply to jobs that truly match your skills and career goals.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--accent-orange); margin-bottom: 20px;">💬</div>
+                        <h3 style="color: var(--primary-blue);">Follow Up</h3>
+                        <p>Send a polite follow-up email after applying. Show your continued interest in the position.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Application Modal -->
+    <div id="applicationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; backdrop-filter: blur(5px);">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border-radius: 20px; padding: 40px; max-width: 700px; width: 90%; max-height: 90%; overflow-y: auto; box-shadow: var(--shadow-heavy);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 id="modalJobTitle" style="color: var(--primary-blue);">Apply for Job</h2>
+                <button onclick="closeApplicationModal()" style="background: var(--gradient-orange); border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; transition: all 0.3s ease;">&times;</button>
+            </div>
+
+            <form id="applicationForm" onsubmit="submitApplication(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="applicantName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="applicantName" name="applicantName" required placeholder="Your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="applicantEmail">Email Address <span class="required">*</span></label>
+                        <input type="email" id="applicantEmail" name="applicantEmail" required placeholder="your.email@example.com">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="applicantPhone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="applicantPhone" name="applicantPhone" required placeholder="0123456789">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="applicantLocation">Location <span class="required">*</span></label>
+                        <input type="text" id="applicantLocation" name="applicantLocation" required placeholder="City, Province">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="cvUpload">Upload CV/Resume <span class="required">*</span></label>
+                    <div class="file-upload-group" id="cvUploadArea">
+                        <div class="file-upload-icon">📄</div>
+                        <input type="file" id="cvUpload" name="cvUpload" accept=".pdf,.doc,.docx" required class="file-upload-input" onchange="handleFileUpload(event)">
+                        <div class="file-upload-text">
+                            <strong>Click to upload</strong> or drag and drop your CV<br>
+                            <small>Accepted formats: PDF, DOC, DOCX (Max size: 5MB)</small>
+                        </div>
+                    </div>
+                    <div id="uploadedFileDisplay"></div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="coverLetter">Cover Letter</label>
+                    <textarea id="coverLetter" name="coverLetter" placeholder="Tell us why you're interested in this position and what makes you a great fit..." rows="5"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="experience">Relevant Experience</label>
+                    <textarea id="experience" name="experience" placeholder="Briefly describe your relevant work experience..." rows="4"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="dataConsent" name="dataConsent" required>
+                        <label for="dataConsent">I consent to my personal data being processed for this job application <span class="required">*</span></label>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+                    <button type="button" onclick="closeApplicationModal()" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-floating">
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JOB NOW</h3>
+                    <p>Connecting talented South Africans with exciting career opportunities across all provinces.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Job Seekers</h3>
+                    <ul class="footer-links">
+                        <li><a href="job-seekers.html">Browse Jobs</a></li>
+                        <li><a href="#">Career Advice</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Salary Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Employers</h3>
+                    <ul class="footer-links">
+                        <li><a href="recruiters.html">Post a Job</a></li>
+                        <li><a href="#">Talent Search</a></li>
+                        <li><a href="#">Recruitment Solutions</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JOB NOW. All rights reserved. Proudly South African.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Clear all filters
+        function clearFilters() {
+            document.getElementById('keywordSearch').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('provinceFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            document.getElementById('salaryFilter').value = '';
+            document.getElementById('sectionTitle').textContent = 'All Jobs';
+            filterJobs();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB NOW - Find Your Dream Job in South Africa</title>
+    <meta name="description" content="Discover amazing career opportunities across South Africa with JOB NOW. Connect with top employers and find your perfect job in all 9 provinces.">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <!-- Floating Elements for Visual Interest -->
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Job Now Logo">
+                <span class="logo-text">JOB NOW</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="job-seekers.html" class="nav-link">Find Jobs</a></li>
+                <li><a href="signup.html" class="nav-link">Post Jobs</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-floating">
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+        </div>
+        <div class="container">
+            <h1 class="fade-in-up">Find Your Dream Job in South Africa</h1>
+            <p class="fade-in-up">Connecting talented South Africans with amazing career opportunities across all provinces</p>
+            
+            <!-- Enhanced Search Form -->
+            <div class="hero-search fade-in-up">
+                <form class="search-form" onsubmit="searchJobs(event)">
+                    <div class="search-group">
+                        <label for="jobKeyword">What job?</label>
+                        <input type="text" id="jobKeyword" name="jobKeyword" placeholder="Job title, skills, or company" class="search-input">
+                    </div>
+                    <div class="search-group">
+                        <label for="location">Where?</label>
+                        <select id="location" name="location" class="search-input">
+                            <option value="">All South Africa</option>
+                            <option value="gauteng">Gauteng</option>
+                            <option value="western-cape">Western Cape</option>
+                            <option value="kwazulu-natal">KwaZulu-Natal</option>
+                            <option value="eastern-cape">Eastern Cape</option>
+                            <option value="limpopo">Limpopo</option>
+                            <option value="mpumalanga">Mpumalanga</option>
+                            <option value="north-west">North West</option>
+                            <option value="northern-cape">Northern Cape</option>
+                            <option value="free-state">Free State</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-btn">🔍 Search Jobs</button>
+                </form>
+            </div>
+
+            <!-- Hero CTA Buttons -->
+            <div class="hero-cta">
+                <a href="job-seekers.html" class="btn btn-primary">Browse All Jobs</a>
+                <a href="recruiters.html" class="btn btn-outline">Post a Job - R100</a>
+            </div>
+
+            <!-- Hero Statistics -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number pulse">5000+</div>
+                    <div class="stat-label">Active Jobs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number pulse">1200+</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number pulse">15000+</div>
+                    <div class="stat-label">Job Seekers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number pulse">R100</div>
+                    <div class="stat-label">Fixed Posting Fee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-40 fade-in-up">Popular Job Categories</h2>
+            <div class="grid grid-4">
+                <div class="card fade-in-up" onclick="window.location.href='job-seekers.html'">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">💻</div>
+                        <h3 style="color: var(--primary-blue);">IT & Technology</h3>
+                        <p>Software development, IT support, cybersecurity, and more</p>
+                        <div style="background: var(--light-orange); color: var(--accent-orange); padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold; margin-top: 15px;">
+                            1200+ Jobs
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in-up" onclick="window.location.href='job-seekers.html'">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">💰</div>
+                        <h3 style="color: var(--primary-blue);">Finance & Banking</h3>
+                        <p>Accounting, investment, financial planning, and banking roles</p>
+                        <div style="background: var(--light-orange); color: var(--accent-orange); padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold; margin-top: 15px;">
+                            800+ Jobs
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in-up" onclick="window.location.href='job-seekers.html'">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">🏥</div>
+                        <h3 style="color: var(--primary-blue);">Healthcare</h3>
+                        <p>Nursing, medical, pharmaceutical, and healthcare admin</p>
+                        <div style="background: var(--light-orange); color: var(--accent-orange); padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold; margin-top: 15px;">
+                            650+ Jobs
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in-up" onclick="window.location.href='job-seekers.html'">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">🎯</div>
+                        <h3 style="color: var(--primary-blue);">Sales & Marketing</h3>
+                        <p>Digital marketing, sales, advertising, and business development</p>
+                        <div style="background: var(--light-orange); color: var(--accent-orange); padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold; margin-top: 15px;">
+                            900+ Jobs
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-30">
+                <a href="job-seekers.html" class="btn btn-secondary">View All Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="text-center mb-40 fade-in-up">Why Choose JOB NOW?</h2>
+            <div class="grid grid-3">
+                <div class="card fade-in-up">
+                    <div style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 20px; color: var(--accent-orange);">🎯</div>
+                        <h3 style="color: var(--primary-blue);">Smart Job Matching</h3>
+                        <p>Our advanced algorithm connects you with jobs that perfectly match your skills, experience, and career goals.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <div style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 20px; color: var(--accent-orange);">⚡</div>
+                        <h3 style="color: var(--primary-blue);">Fast Applications</h3>
+                        <p>Apply to multiple jobs quickly with your saved profile and CV. One-click applications make job hunting effortless.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <div style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 20px; color: var(--accent-orange);">🇿🇦</div>
+                        <h3 style="color: var(--primary-blue);">Local Focus</h3>
+                        <p>Exclusively focused on South African opportunities. We understand the local job market and employment landscape.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Employers -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="fade-in-up">
+                    <h2>For Employers</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px;">Reach thousands of qualified candidates across South Africa with our simple, affordable job posting solution.</p>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 10px;">✅ Fixed R100 Fee</h4>
+                        <p>No hidden costs, no monthly subscriptions. Just R100 per job posting for 30 days of visibility.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 10px;">✅ Instant Publishing</h4>
+                        <p>Your job goes live immediately after posting. No waiting for approval or review processes.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 10px;">✅ Quality Candidates</h4>
+                        <p>Access to thousands of pre-screened job seekers actively looking for opportunities.</p>
+                    </div>
+                    
+                    <a href="recruiters.html" class="btn btn-primary">Post Your First Job</a>
+                </div>
+                
+                <div class="card fade-in-up" style="background: var(--gradient-orange); color: var(--white); text-align: center;">
+                    <h3 style="color: var(--white); margin-bottom: 20px;">Ready to Hire?</h3>
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🚀</div>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 30px;">Join over 1,200 companies that trust JOB NOW to find their next great hire.</p>
+                    <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+                        <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 10px;">24 Hours</div>
+                        <div>Average time to receive first application</div>
+                    </div>
+                    <a href="recruiters.html" class="btn" style="background: var(--white); color: var(--accent-orange);">Start Hiring Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Success Stories -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="text-center mb-40 fade-in-up">Success Stories</h2>
+            <div class="grid grid-3">
+                <div class="card fade-in-up">
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 3rem; color: var(--accent-orange);">👨‍💻</div>
+                        <h4 style="color: var(--primary-blue);">Thabo M. - Software Developer</h4>
+                        <p style="font-style: italic; color: var(--medium-gray);">"Found my dream job in Cape Town within 2 weeks of uploading my CV. The application process was so smooth!"</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 3rem; color: var(--accent-orange);">👩‍⚕️</div>
+                        <h4 style="color: var(--primary-blue);">Sarah K. - Nurse</h4>
+                        <p style="font-style: italic; color: var(--medium-gray);">"JOB NOW helped me transition from Johannesburg to Durban. Great opportunities in healthcare!"</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 3rem; color: var(--accent-orange);">🏢</div>
+                        <h4 style="color: var(--primary-blue);">TechStart Ltd. - Employer</h4>
+                        <p style="font-style: italic; color: var(--medium-gray);">"We hired 3 amazing developers through JOB NOW. The R100 fee is incredibly affordable for the quality of candidates."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: var(--gradient-blue); color: var(--white);">
+        <div class="container text-center">
+            <h2 style="color: var(--white); margin-bottom: 20px;">Ready to Take the Next Step?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 40px; color: rgba(255,255,255,0.9);">Whether you're looking for your dream job or the perfect candidate, we're here to help.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="job-seekers.html" class="btn" style="background: var(--white); color: var(--primary-blue);">Find Jobs</a>
+                <a href="recruiters.html" class="btn btn-outline">Post Jobs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-floating">
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JOB NOW</h3>
+                    <p>Connecting talented South Africans with exciting career opportunities across all provinces.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Job Seekers</h3>
+                    <ul class="footer-links">
+                        <li><a href="job-seekers.html">Browse Jobs</a></li>
+                        <li><a href="#">Career Advice</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Salary Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Employers</h3>
+                    <ul class="footer-links">
+                        <li><a href="recruiters.html">Post a Job</a></li>
+                        <li><a href="#">Talent Search</a></li>
+                        <li><a href="#">Recruitment Solutions</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JOB NOW. All rights reserved. Proudly South African.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Enhanced search functionality
+        function searchJobs(event) {
+            event.preventDefault();
+            const keyword = document.getElementById('jobKeyword').value;
+            const location = document.getElementById('location').value;
+            
+            // Redirect to job seekers page with search parameters
+            const params = new URLSearchParams();
+            if (keyword) params.append('keyword', keyword);
+            if (location) params.append('location', location);
+            
+            window.location.href = `job-seekers.html?${params.toString()}`;
+        }
+        
+        // Add scroll animations
+        function addScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.card, h2, p').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', addScrollAnimations);
+    </script>
+</body>
+</html>

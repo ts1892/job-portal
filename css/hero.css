@@ -1,0 +1,301 @@
+/* Enhanced Hero Section Styles for JOB NOW Portal */
+
+.hero {
+    background: var(--gradient-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,800 1000,1000"/><polygon fill="%23ffffff05" points="0,800 1000,600 1000,800 0,1000"/></svg>');
+    background-size: cover;
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    color: var(--white);
+    background: none;
+    -webkit-text-fill-color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Hero Search Form */
+.hero-search {
+    background: var(--white);
+    border-radius: 25px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    box-shadow: var(--shadow-heavy);
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.search-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.search-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-group label {
+    color: var(--dark-gray);
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-input {
+    padding: 15px 20px;
+    border: 2px solid var(--border-gray);
+    border-radius: 15px;
+    font-size: 16px;
+    color: var(--dark-gray);
+    background: var(--white);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(44, 122, 175, 0.1);
+    transform: translateY(-2px);
+}
+
+.search-btn {
+    padding: 15px 30px;
+    background: var(--gradient-orange);
+    color: var(--white);
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-medium);
+}
+
+.search-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+    background: linear-gradient(135deg, #E67E22 0%, #F39C12 100%);
+}
+
+/* Hero CTA Buttons */
+.hero-cta {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hero-cta .btn {
+    padding: 18px 35px;
+    font-size: 18px;
+    min-width: 180px;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Hero Statistics */
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.15);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-orange);
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Floating Elements in Hero */
+.hero-floating {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    animation: heroFloat 8s ease-in-out infinite;
+}
+
+.hero-circle:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.hero-circle:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.hero-circle:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 60%;
+    animation-delay: 4s;
+}
+
+@keyframes heroFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 60px;
+        min-height: 50vh;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .search-form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .search-btn {
+        margin-top: 10px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .hero-search {
+        padding: 15px;
+        margin: 0 15px 30px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
+}

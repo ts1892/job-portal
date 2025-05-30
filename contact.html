@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - JOB NOW</title>
+    <meta name="description" content="Get in touch with JOB NOW's support team. We're here to help with your job search, job posting, and any questions about our platform.">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Job Now Logo">
+                <span class="logo-text">JOB NOW</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="job-seekers.html" class="nav-link">Find Jobs</a></li>
+                <li><a href="signup.html" class="nav-link">Post Jobs</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our team - we're here to help!</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2">
+                <!-- Contact Information -->
+                <div class="fade-in-up">
+                    <h2>Get in Touch</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 40px;">Have questions about our services? Need help with your job posting or application? Our friendly support team is ready to assist you.</p>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 25px;">📞 Contact Information</h3>
+                        
+                        <div style="margin-bottom: 25px; padding: 20px; background: var(--light-blue); border-radius: 15px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                <div style="font-size: 1.5rem; margin-right: 15px; color: var(--primary-blue);">📧</div>
+                                <strong style="color: var(--primary-blue);">Email Support</strong>
+                            </div>
+                            <a href="mailto:support@jobnow.co.za" style="color: var(--primary-blue); text-decoration: none; font-size: 1.1rem;">support@jobnow.co.za</a>
+                            <p style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">We respond within 24 hours</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 25px; padding: 20px; background: var(--light-orange); border-radius: 15px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                <div style="font-size: 1.5rem; margin-right: 15px; color: var(--accent-orange);">📞</div>
+                                <strong style="color: var(--accent-orange);">Phone Support</strong>
+                            </div>
+                            <a href="tel:+27118234567" style="color: var(--accent-orange); text-decoration: none; font-size: 1.1rem;">+27 11 823 4567</a>
+                            <p style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                        
+                        <div style="padding: 20px; background: var(--light-gray); border-radius: 15px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                <div style="font-size: 1.5rem; margin-right: 15px; color: var(--primary-blue);">📍</div>
+                                <strong style="color: var(--primary-blue);">Office Address</strong>
+                            </div>
+                            <p style="margin: 0; line-height: 1.6;">
+                                123 Business Street<br>
+                                Sandton, Gauteng 2196<br>
+                                South Africa
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 20px;">🕒 Business Hours</h3>
+                        <div style="display: grid; gap: 10px;">
+                            <div style="display: flex; justify-content: space-between; padding: 10px; background: var(--light-gray); border-radius: 8px;">
+                                <span><strong>Monday - Friday:</strong></span>
+                                <span>8:00 AM - 5:00 PM</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px; background: var(--light-gray); border-radius: 8px;">
+                                <span><strong>Saturday:</strong></span>
+                                <span>9:00 AM - 1:00 PM</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px; background: var(--light-gray); border-radius: 8px;">
+                                <span><strong>Sunday:</strong></span>
+                                <span style="color: var(--danger-red);">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="fade-in-up">
+                    <div class="form-container">
+                        <h2 style="text-align: center; margin-bottom: 30px;">Send us a Message</h2>
+                        <form id="contactForm" onsubmit="submitContactForm(event)">
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required placeholder="Your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="0123456789">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject <span class="required">*</span></label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="job-seeker">Job Seeker Support</option>
+                                    <option value="employer">Employer Support</option>
+                                    <option value="technical">Technical Issue</option>
+                                    <option value="billing">Billing Question</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="feedback">Feedback & Suggestions</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message <span class="required">*</span></label>
+                                <textarea id="message" name="message" required placeholder="Please describe how we can help you..." rows="6"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <label for="newsletter">Subscribe to our newsletter for job market updates and career tips</label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="text-center mb-40 fade-in-up">How Can We Help?</h2>
+            <div class="grid grid-3">
+                <div class="card text-center fade-in-up">
+                    <div style="font-size: 4rem; color: var(--primary-blue); margin-bottom: 20px;">💼</div>
+                    <h3 style="color: var(--primary-blue);">Job Seekers</h3>
+                    <p>Need help finding the right job or using our search features? Our team can guide you through the process and help optimize your job search strategy.</p>
+                    <a href="job-seekers.html" class="btn btn-secondary" style="margin-top: 15px;">Browse Jobs</a>
+                </div>
+                
+                <div class="card text-center fade-in-up">
+                    <div style="font-size: 4rem; color: var(--primary-blue); margin-bottom: 20px;">🏢</div>
+                    <h3 style="color: var(--primary-blue);">Employers</h3>
+                    <p>Looking to post a job or need help reaching the right candidates? We offer support for job posting, candidate screening, and recruitment strategies.</p>
+                    <a href="recruiters.html" class="btn btn-secondary" style="margin-top: 15px;">Post a Job</a>
+                </div>
+                
+                <div class="card text-center fade-in-up">
+                    <div style="font-size: 4rem; color: var(--primary-blue); margin-bottom: 20px;">🔧</div>
+                    <h3 style="color: var(--primary-blue);">Technical Support</h3>
+                    <p>Experiencing technical difficulties or have questions about our platform features? Our technical support team is here to help resolve any issues.</p>
+                    <a href="mailto:support@jobnow.co.za" class="btn btn-secondary" style="margin-top: 15px;">Get Help</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-40 fade-in-up">Frequently Asked Questions</h2>
+            <div class="grid grid-2">
+                <div class="card fade-in-up">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 15px;">How much does it cost to post a job?</h4>
+                    <p>Job posting costs a fixed fee of R100 for 30 days of visibility. No hidden costs or monthly subscriptions.</p>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 15px;">How quickly will my job posting go live?</h4>
+                    <p>Your job posting goes live immediately after payment confirmation. No waiting for approval processes.</p>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 15px;">Can I edit my job posting after it's live?</h4>
+                    <p>Yes, you can edit your job posting at any time during the 30-day period by contacting our support team.</p>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 15px;">Is it free for job seekers to apply?</h4>
+                    <p>Absolutely! Job seekers can browse and apply to jobs completely free. We never charge candidates.</p>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 15px;">What file formats can I upload for my CV?</h4>
+                    <p>We accept PDF, DOC, and DOCX files up to 5MB in size for CV uploads.</p>
+                </div>
+                
+                <div class="card fade-in-up">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 15px;">How do I receive applications for my job posting?</h4>
+                    <p>Applications are sent directly to the email address you provide when posting the job. You'll receive instant notifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-floating">
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JOB NOW</h3>
+                    <p>Connecting talented South Africans with exciting career opportunities across all provinces.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Job Seekers</h3>
+                    <ul class="footer-links">
+                        <li><a href="job-seekers.html">Browse Jobs</a></li>
+                        <li><a href="#">Career Advice</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Salary Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Employers</h3>
+                    <ul class="footer-links">
+                        <li><a href="recruiters.html">Post a Job</a></li>
+                        <li><a href="#">Talent Search</a></li>
+                        <li><a href="#">Recruitment Solutions</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JOB NOW. All rights reserved. Proudly South African.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.subject || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

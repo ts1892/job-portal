@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - JOB NOW</title>
+    <meta name="description" content="Post your job opening on JOB NOW for just R100. Reach thousands of qualified South African candidates across all provinces.">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Job Now Logo">
+                <span class="logo-text">JOB NOW</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="job-seekers.html" class="nav-link">Find Jobs</a></li>
+                <li><a href="signup.html" class="nav-link active">Post Jobs</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Post a Job</h1>
+            <p>Reach thousands of qualified candidates for just R100</p>
+        </div>
+    </section>
+
+    <!-- Job Posting Form -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2">
+                <!-- Job Posting Form -->
+                <div class="fade-in-up">
+                    <div class="form-container">
+                        <h2>Job Details</h2>
+                        <form id="jobPostingForm" onsubmit="submitJobPosting(event)">
+                            <div class="form-group">
+                                <label for="jobTitle">Job Title <span class="required">*</span></label>
+                                <input type="text" id="jobTitle" name="jobTitle" required placeholder="e.g. Senior Software Developer">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company Name <span class="required">*</span></label>
+                                <input type="text" id="company" name="company" required placeholder="Your company name">
+                            </div>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="category">Job Category <span class="required">*</span></label>
+                                    <select id="category" name="category" required>
+                                        <option value="">Select a category</option>
+                                        <option value="accounting">Accounting & Finance</option>
+                                        <option value="it">Information Technology</option>
+                                        <option value="marketing">Marketing & Sales</option>
+                                        <option value="healthcare">Healthcare & Medical</option>
+                                        <option value="education">Education & Training</option>
+                                        <option value="engineering">Engineering</option>
+                                        <option value="retail">Retail & Customer Service</option>
+                                        <option value="hospitality">Hospitality & Tourism</option>
+                                        <option value="manufacturing">Manufacturing & Production</option>
+                                        <option value="construction">Construction & Property</option>
+                                        <option value="legal">Legal & Compliance</option>
+                                        <option value="transport">Transport & Logistics</option>
+                                        <option value="agriculture">Agriculture & Mining</option>
+                                        <option value="media">Media & Communications</option>
+                                        <option value="government">Government & NGO</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="jobType">Job Type <span class="required">*</span></label>
+                                    <select id="jobType" name="jobType" required>
+                                        <option value="">Select job type</option>
+                                        <option value="fulltime">Full-time</option>
+                                        <option value="parttime">Part-time</option>
+                                        <option value="contract">Contract</option>
+                                        <option value="temporary">Temporary</option>
+                                        <option value="internship">Internship</option>
+                                        <option value="remote">Remote</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="province">Province <span class="required">*</span></label>
+                                    <select id="province" name="province" required onchange="updateCities()">
+                                        <option value="">Select province</option>
+                                        <option value="gauteng">Gauteng</option>
+                                        <option value="western-cape">Western Cape</option>
+                                        <option value="kwazulu-natal">KwaZulu-Natal</option>
+                                        <option value="eastern-cape">Eastern Cape</option>
+                                        <option value="limpopo">Limpopo</option>
+                                        <option value="mpumalanga">Mpumalanga</option>
+                                        <option value="north-west">North West</option>
+                                        <option value="northern-cape">Northern Cape</option>
+                                        <option value="free-state">Free State</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="city">City <span class="required">*</span></label>
+                                    <select id="city" name="city" required>
+                                        <option value="">Select city first</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="salaryMin">Minimum Salary (R)</label>
+                                    <input type="number" id="salaryMin" name="salaryMin" placeholder="25000" onchange="validateSalaryRange()">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="salaryMax">Maximum Salary (R)</label>
+                                    <input type="number" id="salaryMax" name="salaryMax" placeholder="35000" onchange="validateSalaryRange()">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Job Description <span class="required">*</span></label>
+                                <textarea id="description" name="description" required placeholder="Describe the role, responsibilities, and what you're looking for..." rows="6"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="requirements">Requirements <span class="required">*</span></label>
+                                <textarea id="requirements" name="requirements" required placeholder="List the qualifications, skills, and experience required..." rows="4"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactEmail">Contact Email <span class="required">*</span></label>
+                                <input type="email" id="contactEmail" name="contactEmail" required placeholder="hr@yourcompany.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <label for="terms">I agree to the terms and conditions and confirm all information is accurate <span class="required">*</span></label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Post Job - Pay R100</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Pricing Info -->
+                <div class="fade-in-up">
+                    <div class="card" style="background: var(--gradient-blue); color: var(--white); text-align: center; margin-bottom: 30px;">
+                        <h3 style="color: var(--white); margin-bottom: 20px;">Simple Pricing</h3>
+                        <div style="font-size: 4rem; margin-bottom: 20px;">💰</div>
+                        <div style="font-size: 3rem; font-weight: bold; margin-bottom: 10px;">R100</div>
+                        <p style="color: rgba(255,255,255,0.9); margin-bottom: 30px;">Fixed fee for unlimited of visibility</p>
+                        
+                        <div style="text-align: left; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                            <h4 style="color: var(--white); margin-bottom: 15px;">✅ What's Included:</h4>
+                            <ul style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                                <li>Unlimited days of visibility</li>
+                                <li>Featured in search results</li>
+                                <li>Direct candidate applications</li>
+                                <li>Email notifications</li>
+                                <li>Mobile-friendly job listing</li>
+                                <li>Category-based filtering</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 20px;">Why Choose JOB NOW?</h3>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--accent-orange);">🎯 Targeted Reach</h4>
+                            <p>Your job will be seen by thousands of active job seekers across South Africa.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--accent-orange);">⚡ Instant Publishing</h4>
+                            <p>Your job goes live immediately after payment confirmation.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--accent-orange);">📱 Mobile Optimized</h4>
+                            <p>Perfect display on all devices for maximum visibility.</p>
+                        </div>
+                        
+                        <div class="stat-box" style="text-align: center; background: var(--light-orange); padding: 25px; border-radius: 15px; margin-top: 30px;">
+                            <div style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 10px;">24hrs</div>
+                            <p style="margin: 0; color: var(--dark-gray); font-weight: bold;">Average time to first application</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-floating">
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+            <div class="footer-dot"></div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JOB NOW</h3>
+                    <p>Connecting talented South Africans with exciting career opportunities across all provinces.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Job Seekers</h3>
+                    <ul class="footer-links">
+                        <li><a href="job-seekers.html">Browse Jobs</a></li>
+                        <li><a href="#">Career Advice</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Salary Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Employers</h3>
+                    <ul class="footer-links">
+                        <li><a href="recruiters.html">Post a Job</a></li>
+                        <li><a href="#">Talent Search</a></li>
+                        <li><a href="#">Recruitment Solutions</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JOB NOW. All rights reserved. Proudly South African.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/recruiters.js"></script>
+    <script>
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                // If no token, redirect to signup page
+                window.location.href = 'signup.html';
+            }
+        });
+    </script>
+</body>
+</html>

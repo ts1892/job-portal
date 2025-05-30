@@ -1,0 +1,340 @@
+/* Enhanced Global Styles for JOB NOW Portal */
+
+:root {
+    --primary-blue: #2C7AAF;
+    --secondary-blue: #1A5C89;
+    --light-blue: #E8F4FD;
+    --accent-orange: #F39C12;
+    --light-orange: #FDF2E9;
+    --white: #FFFFFF;
+    --light-gray: #F8F9FA;
+    --medium-gray: #6C757D;
+    --dark-gray: #343A40;
+    --border-gray: #E9ECEF;
+    --success-green: #28A745;
+    --warning-yellow: #FFC107;
+    --danger-red: #DC3545;
+    --gradient-blue: linear-gradient(135deg, #2C7AAF 0%, #1A5C89 100%);
+    --gradient-orange: linear-gradient(135deg, #F39C12 0%, #E67E22 100%);
+    --gradient-light: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    --shadow-light: 0 2px 10px rgba(44, 122, 175, 0.1);
+    --shadow-medium: 0 5px 20px rgba(44, 122, 175, 0.15);
+    --shadow-heavy: 0 10px 30px rgba(44, 122, 175, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Enhanced Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Enhanced Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--secondary-blue);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 3.5rem;
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+p {
+    margin-bottom: 15px;
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+}
+
+/* Enhanced Sections */
+.section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-light {
+    background: var(--gradient-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23E8F4FD" opacity="0.5"/><circle cx="80" cy="80" r="2" fill="%23F39C12" opacity="0.3"/><circle cx="60" cy="30" r="1.5" fill="%232C7AAF" opacity="0.4"/></svg>');
+    z-index: 0;
+}
+
+.section-light > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Enhanced Grid System */
+.grid {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Enhanced Cards */
+.card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(44, 122, 175, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-blue);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-blue);
+}
+
+/* Enhanced Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: var(--gradient-blue);
+    color: var(--white);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+    background: linear-gradient(135deg, #1A5C89 0%, #2C7AAF 100%);
+}
+
+.btn-secondary {
+    background: var(--gradient-orange);
+    color: var(--white);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+    background: linear-gradient(135deg, #E67E22 0%, #F39C12 100%);
+}
+
+/* Enhanced Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+.mb-40 { margin-bottom: 40px; }
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .grid {
+        gap: 20px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+/* Floating Elements for Visual Interest */
+.floating-elements {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--light-blue);
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-circle:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-circle:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 10%;
+    animation-delay: 2s;
+    background: var(--light-orange);
+}
+
+.floating-circle:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    top: 80%;
+    left: 60%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
